@@ -32,15 +32,29 @@ float mean(int nElements, float arr[], int pos) {
 	return (((arr[pos]) / (nElements)) + (mean(nElements, arr, pos + 1)));
 }
 
+float variance(int nElements, float arr[], int pos, float mean) {
+	float poweredMinter = 1.0;
+	if (pos == nElements - 1) {
+		poweredMinter = ((arr[pos]) - (mean));
+		poweredMinter *= poweredMinter;
+		return ((poweredMinter) / (nElements));
+	}
+	poweredMinter = ((arr[pos]) - (mean));
+	poweredMinter *= poweredMinter;
+	return (((poweredMinter) / (nElements)) + (variance(nElements, arr, pos + 1, mean)));
+}
+
 //Main function
 int main(int args, char* argsv[]) {
-	float arr[] = { 1, 2, 3, 4, 5, NULL, NULL, NULL };
+	float arr[] = { 1500, 1200, 1700, 1300, 1800, NULL, NULL, NULL };
 	int tam = length(arr, 0);
 	float suma = sigmaArrayElements(tam, arr, 0);
 	float prom = mean(tam, arr, 0);
+	float varianza = variance(tam, arr, 0, prom);
 	cout << "El length es de: " << tam << endl;
 	cout << "El sigma de los elementos es: " << suma << endl;
 	cout << "El prom de los elementos es: " << prom << endl;
+	cout << "La varianza de los elementos es: " << varianza << endl;
 
 	return 0;
 }
