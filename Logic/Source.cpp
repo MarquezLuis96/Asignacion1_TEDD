@@ -94,6 +94,16 @@ int combina(int n, int k) {
 	return combina(n - 1, k - 1) + combina(n - 1, k);
 }
 
+int permutation(int n) {
+	int permu = 1;
+	if (n == 1) {
+		return 1;
+	}
+	permu = n * permutation(n - 1);
+
+	return permu;
+}
+
 //Main function
 int main(int args, char* argsv[]) {
 	float arr[] = { 1500, 1200, 1700, 1300, 1800, NULL, NULL, NULL };
@@ -105,6 +115,7 @@ int main(int args, char* argsv[]) {
 	float stanDev = standardDeviation(tam, arr, 0, prom);
 	float med = median(tam, arr, 0);
 	int combinaciones = combina(4, 2);
+	int permufactorial = permutation(4);
 	cout << "El length es de: " << tam << endl;
 	cout << "El sigma de los elementos es: " << suma << endl;
 	cout << "El prom de los elementos es: " << prom << endl;
@@ -112,6 +123,7 @@ int main(int args, char* argsv[]) {
 	cout << "La desviacion estandar de los elementos es: " << stanDev << endl;
 	cout << "La mediana de los elementos es: " << med << endl;
 	cout << "Las combinaciones que se pueden lograr con los elementos son: " << combinaciones << endl;
+	cout << "La permuta de los elementos es: " << permufactorial << endl;
 
 	return 0;
 }
