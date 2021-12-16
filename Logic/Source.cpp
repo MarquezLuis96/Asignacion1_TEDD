@@ -82,10 +82,16 @@ float standardDeviation(int nElements, float arr[], int pos, float mean) {
 	return (((poweredMinter) / (nElements)) + (standardDeviation(nElements, arr, pos + 1, mean)));
 }
 
-float mode(float arr[], int tam_arr, int pos_arr, float* freqTable[][], int col, int fil) {
-	if (freqTable[0][0] == NULL) {
-		
+int combina(int n, int k) {
+	if (k > n) {
+		return 0;
 	}
+
+	if (k == 0 || k == n) {
+		return 1;
+	}
+
+	return combina(n - 1, k - 1) + combina(n - 1, k);
 }
 
 //Main function
@@ -98,12 +104,14 @@ int main(int args, char* argsv[]) {
 	float varianza = variance(tam, arr, 0, prom);
 	float stanDev = standardDeviation(tam, arr, 0, prom);
 	float med = median(tam, arr, 0);
+	int combinaciones = combina(4, 2);
 	cout << "El length es de: " << tam << endl;
 	cout << "El sigma de los elementos es: " << suma << endl;
 	cout << "El prom de los elementos es: " << prom << endl;
 	cout << "La varianza de los elementos es: " << varianza << endl;
 	cout << "La desviacion estandar de los elementos es: " << stanDev << endl;
 	cout << "La mediana de los elementos es: " << med << endl;
+	cout << "Las combinaciones que se pueden lograr con los elementos son: " << combinaciones << endl;
 
 	return 0;
 }
