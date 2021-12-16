@@ -94,6 +94,22 @@ int combina(int n, int k) {
 	return combina(n - 1, k - 1) + combina(n - 1, k);
 }
 
+int variation(int n, int k, int n_k) {
+	int varia = 1;
+
+	if (k > n) {
+		return 0;
+	}
+	if (n_k == NULL) {
+		n_k = n - k;
+	}
+	if (n == n_k) {
+		return 1;
+	}
+
+	varia = n * variation((n - 1), k, n_k);
+}
+
 int permutation(int n) {
 	int permu = 1;
 	if (n == 1) {
@@ -116,6 +132,8 @@ int main(int args, char* argsv[]) {
 	float med = median(tam, arr, 0);
 	int combinaciones = combina(4, 2);
 	int permufactorial = permutation(4);
+	int varia = variation(10, 3, NULL);
+
 	cout << "El length es de: " << tam << endl;
 	cout << "El sigma de los elementos es: " << suma << endl;
 	cout << "El prom de los elementos es: " << prom << endl;
@@ -124,6 +142,7 @@ int main(int args, char* argsv[]) {
 	cout << "La mediana de los elementos es: " << med << endl;
 	cout << "Las combinaciones que se pueden lograr con los elementos son: " << combinaciones << endl;
 	cout << "La permuta de los elementos es: " << permufactorial << endl;
+	cout << "Las variaciones de los elementos son: " << varia << endl;
 
 	return 0;
 }
