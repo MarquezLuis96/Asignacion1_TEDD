@@ -37,7 +37,7 @@ float median(int nElements, float arr[], int pos) {
 	if ((nElements - 1) % 2 == 0) {
 		if (pos != (nElements - 1) / 2) {
 			aux = median(nElements, arr, (pos + 1));
-		}
+		}	
 		else {
 			return arr[pos];
 		}
@@ -82,9 +82,16 @@ float standardDeviation(int nElements, float arr[], int pos, float mean) {
 	return (((poweredMinter) / (nElements)) + (standardDeviation(nElements, arr, pos + 1, mean)));
 }
 
+float mode(float arr[], int tam_arr, int pos_arr, float* freqTable[][], int col, int fil) {
+	if (freqTable[0][0] == NULL) {
+		
+	}
+}
+
 //Main function
 int main(int args, char* argsv[]) {
 	float arr[] = { 1500, 1200, 1700, 1300, 1800, NULL, NULL, NULL };
+	float freq[8][2] = { {1500, NULL}, {1200, NULL}, {1700, NULL}, {1300, NULL}, {1800, NULL}, {NULL, NULL}, {NULL, NULL}, {NULL, NULL} };
 	int tam = length(arr, 0);
 	float suma = sigmaArrayElements(tam, arr, 0);
 	float prom = mean(tam, arr, 0);
